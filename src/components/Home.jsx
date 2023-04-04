@@ -29,7 +29,6 @@ function HomePage() {
                     Log In 
                   </button>
                 )}
-    <Games />
     </div>
   );
 }
