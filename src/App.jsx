@@ -7,27 +7,28 @@ import Games from "./components/Games";
 import Checkout from "./components/Checkout";
 import CartProvider from "./components/CartContext";
 import Confirm from "./components/Confirm";
-import { Auth0Provider} from "@auth0/auth0-react";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Auth0Provider
-    domain="dev-32zr27wj6sjglj8v.us.auth0.com"
-    clientId="lQTCntH0ECjdR8JoTNOlDUgl4IOLezmj"
-    authorizationParams={{
-      redirect_uri: window.location.origin,
-    }} >
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Checkout" element={<Checkout />} />
-          <Route path="/Confirm" element={<Confirm />} />
-          <Route path="/Games" element={<Games />} />
-        </Routes>
-      </Auth0Provider>  
+        <Auth0Provider
+          domain="dev-32zr27wj6sjglj8v.us.auth0.com"
+          clientId="lQTCntH0ECjdR8JoTNOlDUgl4IOLezmj"
+          authorizationParams={{
+            redirect_uri: window.location.origin,
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<Signup />} />
+            <Route path="/Checkout" element={<Checkout />} />
+            <Route path="/Confirm" element={<Confirm />} />
+            <Route path="/Games" element={<Games />} />
+          </Routes>
+        </Auth0Provider>
       </BrowserRouter>
     </>
   );
