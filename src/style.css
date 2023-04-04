@@ -1,0 +1,169 @@
+
+:root{
+    --pink:pink;
+    --purple:rgb(182, 36, 182);
+    --green:#127369;
+    --darkgreen:#10403B;
+    --grey:#8AA6A3;
+    --darkgrey:#4C5958;
+    --white:#BFBFBF;
+    --oxygen: 'Oxygen', sans-serif;
+    --mono: 'Oxygen Mono', monospace;
+}
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--oxygen);
+}
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    padding: 1rem 2rem;
+    background-color: #4a4e69;
+    color: #f7f7f7;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #4a4e69d6;
+  }
+  
+  .games-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .games-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .games-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .games-list li:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .games-list li.selected {
+    background-color: #4caf50;
+    color: #fff;
+  }
+
+  /* checkout */
+  .cart-container {
+    display: flex;
+    flex-flow: column ;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  
+  .cart-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .form{
+    margin-top: 1rem;
+  }
+  .checkout-form {
+    margin-top: 1rem;
+  }
+  
+  .checkout-form label,
+  .checkout-form select {
+    /* display: block; */
+    margin-bottom: 10px;
+  }
+  
+  .checkout-form input,
+  .checkout-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  a{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    
+  }
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 1rem 2rem;
+  }
+  button:active{
+    color:#0069d9
+  }
+  
+  .checkout-form button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .checkout-form input,
+    .checkout-form select {
+      margin-bottom: 10px;
+    }
+  }
+  
+  
