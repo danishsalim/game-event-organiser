@@ -12,7 +12,7 @@ const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([]);
 
-  const [orderData, setOrderData] = useState("");
+  const [orderData, setOrderData] = useState();
 
   const transportData = [
     {
