@@ -3,7 +3,7 @@ import { CartContext } from "./CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Confirm = () => {
-  const { orderData,charge, games , setGames } = useContext(CartContext);
+  const { orderData, charge, games , setGames } = useContext(CartContext);
   const navigate = useNavigate()
 
   const handlehome =()=>{
@@ -17,7 +17,7 @@ const Confirm = () => {
 
   return (
     <div className="games-container">
-      {orderData ? (
+      {orderData.location ? (
         <>
           <h2>Your Order Summery</h2>
           <ul className="games-list">
@@ -28,13 +28,12 @@ const Confirm = () => {
             <li>Payment Method: {orderData["payment-method"]}</li>
             <li>Amount Paid: {charge}</li>
           </ul>
+          <h2>Thank You!</h2>
+          <p>Your order has been confirmed.</p>
         </>
       ) : (
         <h1>Go home to add items</h1>
       )}
-       <h2>Thank You!</h2>
-      <p>Your order has been confirmed.</p>
-    
       <button onClick={handlehome}>Back to Home </button>
       
     </div>

@@ -22,23 +22,23 @@ const Checkout = () => {
       location: formData.get("location") ?? "",
       "payment-method": formData.get("payment-method") ?? "",
     };
-    // if(obj["event-start-date"].slice(8,10)>=obj["event-end-date"].slice(8,10))
-    // {
-    //    alert(obj["event-start-date"].slice(8,10))
-    // }
-    // else if(obj["event-start-date"].slice(8,10)<=obj["setup-date"].slice(8,10))
-    // {
-    //    alert("setup-date should be earlier than event-start-date kindly change it")
-    // }
-    // else if(obj["event-start-date"].slice(8,10) - obj["setup-date"].slice(8,10) > 1)
-    // {
-    //    alert("setup-date should be 1 day earlier than event-start-date kindly change it")
-    // }
-    // else{
+    if(eventDetail["event-start-date"].slice(8,10)>=eventDetail["event-end-date"].slice(8,10))
+    {
+       alert("event-start-date should be earlier than event-end-date kindly change it")
+    }
+    else if(eventDetail["event-start-date"].slice(8,10)<=eventDetail["setup-date"].slice(8,10))
+    {
+       alert("setup-date should be earlier than event-start-date kindly change it")
+    }
+    else if(eventDetail["event-start-date"].slice(8,10) - eventDetail["setup-date"].slice(8,10) > 1)
+    {
+       alert("setup-date should be 1 day earlier than event-start-date kindly change it")
+    }
+    else{
 
     setOrderData(eventDetail);
     navigate("/Confirm");
-    // }
+    }
   };
 
   const handleLocation = (e) => {
@@ -82,6 +82,7 @@ const Checkout = () => {
               type="datetime-local"
               id="event-start-date"
               name="event-start-date"
+              required
             />
 
             <label htmlFor="event-end-date">Event End Date:</label>
@@ -89,13 +90,14 @@ const Checkout = () => {
               type="datetime-local"
               id="event-end-date"
               name="event-end-date"
+              required
             />
 
             <label htmlFor="setup-date">Setup Date:</label>
-            <input type="datetime-local" id="setup-date" name="setup-date" />
+            <input type="datetime-local" id="setup-date" name="setup-date" required/>
 
             <label htmlFor="location">Event Location:</label>
-            <select id="location" name="location" onChange={handleLocation}>
+            <select id="location" name="location" onChange={handleLocation} required>
               <option value="">Select Location</option>
               <option value="Baghajatin, Kolkata, WB">
                 Baghajatin, Kolkata, WB
@@ -117,7 +119,7 @@ const Checkout = () => {
             </div>
 
             <label htmlFor="payment-method">Payment Method:</label>
-            <select id="payment-method" name="payment-method">
+            <select id="payment-method" name="payment-method" required>
               <option value="">Select Payment Method</option>
               <option value="UPI">UPI</option>
               <option value="Cash">Cash</option>
