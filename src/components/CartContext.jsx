@@ -10,11 +10,20 @@ const CartProvider = ({ children }) => {
     { id: 4, name: "Catch Fish", selected: false, price: 2000 },
   ]);
 
+
+
   const [cart, setCart] = useState([]);
 
   const [orderData, setOrderData] = useState();
 
+  const [charge, setCharge] = useState();
+
   const transportData = [
+    {
+      Id: 0,
+      name: "",
+      Distance: "",
+    },
     {
       Id: 1,
       name: "Baghajatin, Kolkata, WB",
@@ -27,7 +36,7 @@ const CartProvider = ({ children }) => {
     },
     {
       Id: 3,
-      Name: "Sealdaha, Kolkata, WB",
+      name: "Sealdaha, Kolkata, WB",
       Distance: "15km",
     },
 
@@ -47,24 +56,25 @@ const CartProvider = ({ children }) => {
     });
     setGames(updatedGames);
   };
-  //   console.log(games);
 
   const handleAddToCart = () => {
     const updatedCart = games.filter((game) => game.selected);
     setCart(updatedCart);
-    // console.log(cart);
   };
 
   return (
     <CartContext.Provider
       value={{
         games,
+        setGames,
         cart,
         handleGameSelection,
         handleAddToCart,
         orderData,
         setOrderData,
         transportData,
+        charge,
+        setCharge,
       }}
     >
       {children}

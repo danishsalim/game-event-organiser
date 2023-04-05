@@ -2,10 +2,15 @@ import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 const Checkout = () => {
-  const { cart,setOrderData } = useContext(CartContext);
-
+  const { cart, setOrderData, transportData,charge,setCharge } = useContext(CartContext);
   const navigate = useNavigate();
+
+  const [locate, setLocate] = useState("");
+  const [distance, setDistance] = useState("");
+  
+
   const handleEnquiry = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -13,8 +18,8 @@ const Checkout = () => {
     const eventDetail = {
       "event-start-date": formData.get("event-start-date") ?? "",
       "event-end-date": formData.get("event-end-date") ?? "",
-      "setup-date": formData.get("setup-date") ?? "" ,
-      "location": formData.get("location") ?? "" ,
+      "setup-date": formData.get("setup-date") ?? "",
+      location: formData.get("location") ?? "",
       "payment-method": formData.get("payment-method") ?? "",
     };
     // if(obj["event-start-date"].slice(8,10)>=obj["event-end-date"].slice(8,10))
@@ -36,9 +41,21 @@ const Checkout = () => {
     // }
   };
 
-  const handleHidden =()=>{
-      document.querySelector("#charge").classList.remove('hidden');
-  }
+  const handleLocation = (e) => {
+    let loc = e.target.value;
+    setLocate(loc);
+    let dist = transportData
+      .filter((data) => data.name == loc)[0]
+      ["Distance"].slice(0, 2) || 0;
+    setDistance(dist + "km");
+    if (dist && 2 * dist < 30) {
+      setCharge(1500 + "rs");
+    } else {
+      let charge = (2 * dist - 30) * 50 + 1500;
+      setCharge(charge + "rs");
+    }
+    document.querySelector("#charge").classList.remove("hidden");
+  };
 
   return (
     <div className="cart-container">
@@ -78,7 +95,7 @@ const Checkout = () => {
             <input type="datetime-local" id="setup-date" name="setup-date" />
 
             <label htmlFor="location">Event Location:</label>
-            <select id="location" name="location" onChange={handleHidden}>
+            <select id="location" name="location" onChange={handleLocation}>
               <option value="">Select Location</option>
               <option value="Baghajatin, Kolkata, WB">
                 Baghajatin, Kolkata, WB
@@ -93,9 +110,9 @@ const Checkout = () => {
             </select>
 
             <div className="hidden" id="charge">
-              <h3>Location :</h3>
-              <h3>Distance :</h3>
-              <h3>Charge :</h3>
+              <h3>Location : {locate} </h3>
+              <h3>Distance : {distance} </h3>
+              <h3> Charge : {charge}</h3>
               <h5>Select a Payment Method to Proceed :</h5>
             </div>
 

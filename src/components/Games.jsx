@@ -11,6 +11,7 @@ const Games = () => {
       <h2>Games</h2>
       <ul className="games-list">
         {games.map((game) => (
+          // eslint-disable-next-line
           <li
             key={game.id}
             className={game.selected ? "selected" : ""}
@@ -20,10 +21,11 @@ const Games = () => {
           </li>
         ))}
       </ul>
-      <button onClick={() => handleAddToCart()}>Add to cart</button>
-     
-        <Link to="/Checkout"> <button>Go to cart </button></Link>{" "}
-     
+      
+      <Link to="/Checkout">
+        {" "}
+        <button onClick={() => handleAddToCart()}>Add to cart</button>
+      </Link>{" "}
     </div>
   );
 };

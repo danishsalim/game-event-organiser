@@ -21,12 +21,14 @@ const App = () => {
           }}
         >
           <Routes>
+          
             <Route path="/" element={<HomePage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Checkout" element={<Checkout />} />
             <Route path="/Confirm" element={<Confirm />} />
             <Route path="/Games" element={<Games />} />
+      
           </Routes>
         </Auth0Provider>
       </BrowserRouter>
