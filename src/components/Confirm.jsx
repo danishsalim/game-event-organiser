@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Confirm = () => {
   const { orderData, charge, games , setGames } = useContext(CartContext);
